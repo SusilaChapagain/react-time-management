@@ -1,30 +1,40 @@
 import React from "react";
 
-export const TaskList = ({ taskList }) => {
+export const TaskList = ({
+  taskList,
+  handleOnDeleteTaskList,
+  markAsNotToDo,
+}) => {
   console.log(taskList);
 
   return (
-    <div class="col-md-6">
-      <h2 class="text-center">Task list</h2>
+    <div className="col-md-6">
+      <h2 className="text-center">Task list</h2>
       <hr />
-      <div class="list-items">
-        <table class="table table-striped">
+      <div className="list-items">
+        <table className="table table-striped">
           <tbody id="task-list">
             {taskList.map((item, i) => {
               return (
-                <tr>
+                <tr key={i}>
                   <td>
                     <input type="checkbox" name="" id="" />
                     {item.task}
                   </td>
 
                   <td>{item.hr}</td>
-                  <td class="text-end">
-                    <button class="btn-danger" onclick="deleteItem(${i})">
-                      <i class="fa-solid fa-trash-can"></i>
+                  <td className="text-end">
+                    <button
+                      className="btn-danger"
+                      onClick={() => handleOnDeleteTaskList(i)}
+                    >
+                      <i className="fa-solid fa-trash-can"></i>
                     </button>
-                    <button class="btn btn-sm" onclick="markAsNotToDo(${i})">
-                      <i class="fa-solid fa-arrow-right"></i>
+                    <button
+                      className="btn btn-sm"
+                      onClick={() => markAsNotToDo(i)}
+                    >
+                      <i className="fa-solid fa-arrow-right"></i>
                     </button>
                   </td>
                 </tr>
